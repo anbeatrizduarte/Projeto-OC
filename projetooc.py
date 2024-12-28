@@ -2,9 +2,9 @@
 # O programa deve aceitar os gates AND, NAND, OR, NOR, NOT, XOR, NXOR.
 def operacoes(tipo_operacao, valor):
     if tipo_operacao == "and":
-        return valor[0] & valor[1]
+        return 1 if all(valor) else 0
     elif tipo_operacao == "nand":
-        return 1 - (valor[0] & valor[1])
+        return 1 - (1 if all(valor) else 0)
     elif tipo_operacao == "or":
         return valor[0] | valor[1]
     elif tipo_operacao == "nor":
@@ -24,7 +24,7 @@ def operacoes(tipo_operacao, valor):
 #O arquivo texto de entrada deve conter a descrição de um circuito digital combinacional (combinação de portas), no formato descrito e exemplificado no anexo
 def ler_arquivo_entrada():
     arquivo_circuito = {}
-    with open("C:/Users/bana2/Desktop/Projeto OC/Projeto-OC-main/Projeto-OC-main/circuito_teste2.txt", "r") as arquivo_entrada:
+    with open("circuito_teste.txt", "r") as arquivo_entrada:
         for linha in arquivo_entrada:
             tipo, valor = linha.split(':', 1)
             tipo, valor = tipo.strip(), valor.strip()
@@ -68,7 +68,7 @@ def gerar_tabela_verdade():
 
 
 def escrever_arquivo_saida():
-    with open("arquivo_circuito_saida2", "w") as arquivo_saida:
+    with open("arquivo_circuito_saida.txt", "w") as arquivo_saida:
         arquivo_saida.write("Tabela Verdade das Operações\n")
         tabela_verdade_saida = gerar_tabela_verdade()
         arquivo_saida.write(tabela_verdade_saida)
