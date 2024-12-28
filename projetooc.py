@@ -26,6 +26,7 @@ def ler_arquivo_entrada():
     arquivo_circuito = {}
     with open("circuito_teste.txt", "r") as arquivo_entrada:
         for linha in arquivo_entrada:
+#Formatação das informações que tem que pegar
             tipo, valor = linha.split(':', 1)
             tipo, valor = tipo.strip(), valor.strip()
             if valor.startswith('[') and valor.endswith(']'):
@@ -58,6 +59,7 @@ def combinacoes_tabela_verdade(num_entradas):
 def gerar_tabela_verdade():
     circuito = ler_arquivo_entrada()
     entradas = sorted(circuito['entradas'])
+#Formatação da exibição da tabela
     tabela = f"{' | '.join(entradas)} | Saída\n{'-' * (len(entradas) * 6 + 7)}\n"
     
     for combinacao in combinacoes_tabela_verdade(len(entradas)):
@@ -66,7 +68,7 @@ def gerar_tabela_verdade():
 
 
 
-
+#Criação do arquivo de saida da tabela verdade
 def escrever_arquivo_saida():
     with open("arquivo_circuito_saida.txt", "w") as arquivo_saida:
         arquivo_saida.write("Tabela Verdade das Operações\n")
